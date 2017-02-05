@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="drchronoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="accounthistory">
+    <Key>
+      <PropertyRef Name="accountID" />
+    </Key>
+    <Property Name="patientID" Type="nvarchar(max)" />
+    <Property Name="lastlogindate" Type="nvarchar(max)" />
+    <Property Name="lastlogintime" Type="nvarchar(max)" />
+    <Property Name="browser" Type="nvarchar(max)" />
+    <Property Name="ipaddress" Type="nvarchar(max)" />
+    <Property Name="accountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApprovedAppointment">
+    <Key>
+      <PropertyRef Name="ApprovedApptID" />
+    </Key>
+    <Property Name="ApprovedApptID" Type="int" Nullable="false" />
+    <Property Name="appID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AvailableColumnTime">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApptColumn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ApptTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastRefreshDate" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BookedTime">
+    <Key>
+      <PropertyRef Name="Booked_ID" />
+    </Key>
+    <Property Name="Booked_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApptColumn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ApptTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apptDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="devices">
+    <Key>
+      <PropertyRef Name="deviceid" />
+    </Key>
+    <Property Name="patientID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AuthorizedDevices" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="deviceid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoctorRoom">
+    <Key>
+      <PropertyRef Name="ProviderID" />
+    </Key>
+    <Property Name="ProviderID" Type="int" Nullable="false" />
+    <Property Name="ColID" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Doctoruser">
+    <Key>
+      <PropertyRef Name="doctorID" />
+    </Key>
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrimarySpeciality" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BoardCertified" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="YearsInPractice" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NPI_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="stateLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="otherLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cellno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Skype" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="state" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="zip" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dob" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="referredby" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isActive" Type="nvarchar(max)" />
+    <Property Name="doctorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loginuser">
+    <Key>
+      <PropertyRef Name="patientID" />
+    </Key>
+    <Property Name="patientID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pass" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TwoFactorAuth" Type="int" Nullable="false" />
+    <Property Name="autolock" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PendingAppointments">
+    <Key>
+      <PropertyRef Name="appID" />
+    </Key>
+    <Property Name="appID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="patientID" Type="nvarchar(max)" />
+    <Property Name="appTime" Type="nvarchar(max)" />
+    <Property Name="appDate" Type="nvarchar(max)" />
+    <Property Name="appType" Type="nvarchar(max)" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="ProviderID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="Feedback" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SeeDoctorNow">
+    <Key>
+      <PropertyRef Name="ApptID" />
+    </Key>
+    <Property Name="ApptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="ProviderID" Type="int" Nullable="false" />
+    <Property Name="ApptDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ApptTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ApptType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="Feedack" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserActivation">
+    <Key>
+      <PropertyRef Name="activationID" />
+    </Key>
+    <Property Name="patientID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActivationCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="activationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ApprovedA__appID__367C1819">
+    <End Role="PendingAppointments" Type="Self.PendingAppointments" Multiplicity="1" />
+    <End Role="ApprovedAppointment" Type="Self.ApprovedAppointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PendingAppointments">
+        <PropertyRef Name="appID" />
+      </Principal>
+      <Dependent Role="ApprovedAppointment">
+        <PropertyRef Name="appID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PendingAp__Provi__2CF2ADDF">
+    <End Role="DoctorRoom" Type="Self.DoctorRoom" Multiplicity="1" />
+    <End Role="PendingAppointments" Type="Self.PendingAppointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorRoom">
+        <PropertyRef Name="ProviderID" />
+      </Principal>
+      <Dependent Role="PendingAppointments">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SeeDoctor__Provi__30C33EC3">
+    <End Role="DoctorRoom" Type="Self.DoctorRoom" Multiplicity="1" />
+    <End Role="SeeDoctorNow" Type="Self.SeeDoctorNow" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoctorRoom">
+        <PropertyRef Name="ProviderID" />
+      </Principal>
+      <Dependent Role="SeeDoctorNow">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SeeDoctorNow_SeeDoctorNow">
+    <End Role="SeeDoctorNow" Type="Self.SeeDoctorNow" Multiplicity="1" />
+    <End Role="SeeDoctorNow1" Type="Self.SeeDoctorNow" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SeeDoctorNow">
+        <PropertyRef Name="ApptID" />
+      </Principal>
+      <Dependent Role="SeeDoctorNow1">
+        <PropertyRef Name="ApptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="getAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="patientId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetFutureAvailableAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProviderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMyFutureAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProviderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMyTodayAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProviderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getpass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar(max)" Mode="InOut" />
+  </Function>
+  <Function Name="GetPastAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateTime" Type="nvarchar" Mode="In" />
+    <Parameter Name="patientId" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetPatientsInQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProviderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Signin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="patientid" Type="nvarchar(max)" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="drchronoModelStoreContainer">
+    <EntitySet Name="accounthistory" EntityType="Self.accounthistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApprovedAppointment" EntityType="Self.ApprovedAppointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AvailableColumnTime" EntityType="Self.AvailableColumnTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookedTime" EntityType="Self.BookedTime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="devices" EntityType="Self.devices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoctorRoom" EntityType="Self.DoctorRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Doctoruser" EntityType="Self.Doctoruser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loginuser" EntityType="Self.loginuser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PendingAppointments" EntityType="Self.PendingAppointments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeeDoctorNow" EntityType="Self.SeeDoctorNow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserActivation" EntityType="Self.UserActivation" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ApprovedA__appID__367C1819" Association="Self.FK__ApprovedA__appID__367C1819">
+      <End Role="PendingAppointments" EntitySet="PendingAppointments" />
+      <End Role="ApprovedAppointment" EntitySet="ApprovedAppointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PendingAp__Provi__2CF2ADDF" Association="Self.FK__PendingAp__Provi__2CF2ADDF">
+      <End Role="DoctorRoom" EntitySet="DoctorRoom" />
+      <End Role="PendingAppointments" EntitySet="PendingAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SeeDoctor__Provi__30C33EC3" Association="Self.FK__SeeDoctor__Provi__30C33EC3">
+      <End Role="DoctorRoom" EntitySet="DoctorRoom" />
+      <End Role="SeeDoctorNow" EntitySet="SeeDoctorNow" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeeDoctorNow_SeeDoctorNow" Association="Self.FK_SeeDoctorNow_SeeDoctorNow">
+      <End Role="SeeDoctorNow" EntitySet="SeeDoctorNow" />
+      <End Role="SeeDoctorNow1" EntitySet="SeeDoctorNow" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

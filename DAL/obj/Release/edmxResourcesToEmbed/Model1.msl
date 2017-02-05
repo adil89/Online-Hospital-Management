@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="drchronoModelStoreContainer" CdmEntityContainer="drchronoEntities">
+    <EntitySetMapping Name="accounthistories">
+      <EntityTypeMapping TypeName="drchronoModel.accounthistory">
+        <MappingFragment StoreEntitySet="accounthistory">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="lastlogindate" ColumnName="lastlogindate" />
+          <ScalarProperty Name="lastlogintime" ColumnName="lastlogintime" />
+          <ScalarProperty Name="browser" ColumnName="browser" />
+          <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+          <ScalarProperty Name="accountID" ColumnName="accountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loginusers">
+      <EntityTypeMapping TypeName="drchronoModel.loginuser">
+        <MappingFragment StoreEntitySet="loginuser">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="TwoFactorAuth" ColumnName="TwoFactorAuth" />
+          <ScalarProperty Name="autolock" ColumnName="autolock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="devices">
+      <EntityTypeMapping TypeName="drchronoModel.device">
+        <MappingFragment StoreEntitySet="devices">
+          <ScalarProperty Name="deviceid" ColumnName="deviceid" />
+          <ScalarProperty Name="AuthorizedDevices" ColumnName="AuthorizedDevices" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserActivations">
+      <EntityTypeMapping TypeName="drchronoModel.UserActivation">
+        <MappingFragment StoreEntitySet="UserActivation">
+          <ScalarProperty Name="activationID" ColumnName="activationID" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doctorusers">
+      <EntityTypeMapping TypeName="drchronoModel.Doctoruser">
+        <MappingFragment StoreEntitySet="Doctoruser">
+          <ScalarProperty Name="doctorID" ColumnName="doctorID" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="referredby" ColumnName="referredby" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="zip" ColumnName="zip" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="cellno" ColumnName="cellno" />
+          <ScalarProperty Name="otherLicense" ColumnName="otherLicense" />
+          <ScalarProperty Name="stateLicense" ColumnName="stateLicense" />
+          <ScalarProperty Name="NPI_NO" ColumnName="NPI_NO" />
+          <ScalarProperty Name="YearsInPractice" ColumnName="YearsInPractice" />
+          <ScalarProperty Name="BoardCertified" ColumnName="BoardCertified" />
+          <ScalarProperty Name="PrimarySpeciality" ColumnName="PrimarySpeciality" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvailableColumnTimes">
+      <EntityTypeMapping TypeName="drchronoModel.AvailableColumnTime">
+        <MappingFragment StoreEntitySet="AvailableColumnTime">
+          <ScalarProperty Name="LastRefreshDate" ColumnName="LastRefreshDate" />
+          <ScalarProperty Name="ApptTime" ColumnName="ApptTime" />
+          <ScalarProperty Name="ApptColumn" ColumnName="ApptColumn" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookedTimes">
+      <EntityTypeMapping TypeName="drchronoModel.BookedTime">
+        <MappingFragment StoreEntitySet="BookedTime">
+          <ScalarProperty Name="apptDate" ColumnName="apptDate" />
+          <ScalarProperty Name="ApptTime" ColumnName="ApptTime" />
+          <ScalarProperty Name="ApptColumn" ColumnName="ApptColumn" />
+          <ScalarProperty Name="Booked_ID" ColumnName="Booked_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoctorRooms">
+      <EntityTypeMapping TypeName="drchronoModel.DoctorRoom">
+        <MappingFragment StoreEntitySet="DoctorRoom">
+          <ScalarProperty Name="ColID" ColumnName="ColID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeeDoctorNows">
+      <EntityTypeMapping TypeName="drchronoModel.SeeDoctorNow">
+        <MappingFragment StoreEntitySet="SeeDoctorNow">
+          <ScalarProperty Name="Feedack" ColumnName="Feedack" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ApptType" ColumnName="ApptType" />
+          <ScalarProperty Name="ApptTime" ColumnName="ApptTime" />
+          <ScalarProperty Name="ApptDate" ColumnName="ApptDate" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ApptID" ColumnName="ApptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PendingAppointments">
+      <EntityTypeMapping TypeName="drchronoModel.PendingAppointment">
+        <MappingFragment StoreEntitySet="PendingAppointments">
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="appType" ColumnName="appType" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="appID" ColumnName="appID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getAppointments" FunctionName="drchronoModel.Store.getAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.getAppointments_Result">
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFutureAvailableAppointments" FunctionName="drchronoModel.Store.GetFutureAvailableAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetFutureAvailableAppointments_Result">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="appType" ColumnName="appType" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getpass" FunctionName="drchronoModel.Store.getpass" />
+    <FunctionImportMapping FunctionImportName="GetPastAppointments" FunctionName="drchronoModel.Store.GetPastAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetPastAppointments_Result">
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Signin" FunctionName="drchronoModel.Store.Signin" />
+    <FunctionImportMapping FunctionImportName="GetMyFutureAppointments" FunctionName="drchronoModel.Store.GetMyFutureAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetMyFutureAppointments_Result">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="appType" ColumnName="appType" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMyTodayAppointments" FunctionName="drchronoModel.Store.GetMyTodayAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetMyTodayAppointments_Result">
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="appType" ColumnName="appType" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="ApprovedAppointments">
+      <EntityTypeMapping TypeName="drchronoModel.ApprovedAppointment">
+        <MappingFragment StoreEntitySet="ApprovedAppointment">
+          <ScalarProperty Name="appID" ColumnName="appID" />
+          <ScalarProperty Name="ApprovedApptID" ColumnName="ApprovedApptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetPatientsInQueue" FunctionName="drchronoModel.Store.GetPatientsInQueue">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetPatientsInQueue_Result">
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ApptTime" ColumnName="ApptTime" />
+          <ScalarProperty Name="ApptDate" ColumnName="ApptDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="ApptType" ColumnName="ApptType" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

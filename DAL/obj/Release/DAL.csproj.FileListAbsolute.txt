@@ -1,0 +1,17 @@
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\bin\Release\DAL.dll.config
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\bin\Release\DAL.dll
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\bin\Release\DAL.pdb
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\bin\Release\EntityFramework.dll
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\bin\Release\EntityFramework.xml
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\obj\Release\DAL.dll
+C:\Users\mustufain\documents\visual studio 2013\Projects\drchrono\DAL\obj\Release\DAL.pdb
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\DAL.dll.config
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\DAL.dll
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\DAL.pdb
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\EntityFramework.dll
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\PhoneNumbers.dll
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Release\EntityFramework.xml
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\obj\Release\DAL.dll
+C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\obj\Release\DAL.pdb

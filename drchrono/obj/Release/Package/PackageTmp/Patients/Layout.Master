@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="drchrono.Patients.Layout" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+  <!--  <script src="../Scripts/jquery-ui-1.9.2.js"></script>
+    <script src="../Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script src="../Scripts/jquery-1.9.0.min.js" type="text/javascript"></script> -->
+     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <link href="../Content/themes/bootstrap.css" rel="stylesheet" />
+     
+    <script type="text/javascript">
+       
+
+        $(document).ready(function () {
+
+          
+            var prev_activity = 0;
+            var curr_activity = 0;
+            var usertime = 0;
+          
+            $.ajax({
+                type: "GET",
+                url: "PatientPortal.aspx/getTime",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: "true",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+
+                },
+                success: function (result) {
+
+              //      alert(JSON.stringify(result));
+                    
+                    if (JSON.stringify(result).length == 13)
+                    {
+                //        alert(JSON.stringify(result).substring(8, 9));
+                        usertime = parseInt(JSON.stringify(result).substring(8, 9));
+                    }
+
+                    else
+                    {
+                  //      alert(JSON.stringify(result).substring(8, 10));
+                        usertime = parseInt(JSON.stringify(result).substring(8, 10));
+                    }
+                  
+                 
+
+                }
+            });
+
+
+            
+
+            $('body').click(function () {
+
+              
+                if (prev_activity == 0 && curr_activity == 0)
+
+                {
+                    
+                    curr_activity = new Date().getMinutes();
+                    prev_activity = curr_activity;
+                   
+                
+                }
+
+                else 
+
+                {
+
+                    prev_activity = curr_activity;
+                    curr_activity = new Date().getMinutes();
+                    checkCondition();
+                    
+                }
+
+               
+
+
+            });
+
+           
+
+
+           function checkCondition()
+            {
+
+                   if (curr_activity - prev_activity > usertime) {
+
+                
+                       alert("Your session has expired");
+                       window.location.href = "../Default.aspx";
+                   }
+
+          }
+                
+        });
+
+
+    </script>
+
+    <script>
+
+        function ReadOnly()
+        {
+            $('#date').attr('readonly', 'true');
+            $('#time').attr('readonly', 'true');
+            document.getElementById('cityTextBox').setAttribute("readonly", true);
+            document.getElementById('stateTextBox').setAttribute("readonly", true);
+
+        }
+    </script>
+
+   
+    
+</head>
+<body onload="ReadOnly()">
+    <form runat="server">
+
+         <asp:ScriptManager ID="ScriptMmanager" runat="server" EnablePageMethods="true">
+             </asp:ScriptManager>
+
+  
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>
