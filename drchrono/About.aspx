@@ -8,7 +8,7 @@
 
     <article>
         <p>        
-            Use this area to provide additional information.
+            Use this area to provide additional information. aaa
         </p>
 
         <p>        
@@ -23,7 +23,7 @@
     <aside>
         <h3>Aside Title</h3>
         <p>        
-            Use this area to provide additional information.    blab bla
+            Use this area to provide additional information.    blab bla aaaaaa
         </p>
         <ul>
             <li><a runat="server" href="~/">Home</a></li>
