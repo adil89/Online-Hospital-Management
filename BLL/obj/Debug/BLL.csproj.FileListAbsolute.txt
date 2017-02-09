@@ -17,3 +17,13 @@ C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\BLL\o
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\BLL\obj\Debug\BLL.dll
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\BLL\obj\Debug\BLL.pdb
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\BLL\bin\Debug\PhoneNumbers.dll
+D:\GoMdNow\gomdnow\BLL\bin\Debug\BLL.dll
+D:\GoMdNow\gomdnow\BLL\bin\Debug\BLL.pdb
+D:\GoMdNow\gomdnow\BLL\bin\Debug\DAL.dll
+D:\GoMdNow\gomdnow\BLL\bin\Debug\PhoneNumbers.dll
+D:\GoMdNow\gomdnow\BLL\bin\Debug\EntityFramework.dll
+D:\GoMdNow\gomdnow\BLL\bin\Debug\DAL.pdb
+D:\GoMdNow\gomdnow\BLL\bin\Debug\EntityFramework.xml
+D:\GoMdNow\gomdnow\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\GoMdNow\gomdnow\BLL\obj\Debug\BLL.dll
+D:\GoMdNow\gomdnow\BLL\obj\Debug\BLL.pdb

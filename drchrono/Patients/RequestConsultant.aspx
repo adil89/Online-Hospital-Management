@@ -137,8 +137,9 @@
 </div>
 
                 
-                
+                <button id="addDocument" type="button" class="btn btn-warning btn-md">Add Documents</button>
                 <button id="activate-step-2" class="btn btn-primary btn-md">Continue</button>
+                
             </div>
         </div>
     </div>
@@ -318,12 +319,105 @@
     
 </div>
 
+   
+ <div class="modal fade" id="myModal2">
+  <div style="width:70%;" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Select Documents</h4>
+      </div>
+    
+      <div class="modal-body">
+      
+          <div id="tblMyDocumnents">
+          </div>
+ </div>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Add Documents</button>
+        
+      </div>
+        
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+   
     <script type="text/javascript">
 
        
 
        $(document).ready(function () {
            
+
+           $('#tblMyDocumnents').jtable({
+               title: 'My Documents',
+               pagesize: 10,
+               paging: true,
+               sorting: true,
+               defaultSorting: 'Name ASC',
+               selecting: true, //Enable selecting
+               multiselect: true, //Allow multiple selecting
+               selectingCheckboxes: false, //Show checkboxes on first column
+               //selectOnRowClick: false, //Enable this to only select using checkboxes
+               actions: {
+                   listAction: 'MyDocuments.aspx/GetAllDocument',
+                   //createAction: 'SimplePeopleList.aspx/CreatePerson',
+                   //updateAction: 'SimplePeopleList.aspx/UpdatePerson',
+                   deleteAction: 'MyDocuments.aspx/DeleteFile'
+               },
+               fields: {
+                   FileId: {
+                       key: true,
+                       //create: false,
+                       //edit: false,
+                       list: false
+
+                   },
+                   Name: {
+                       title: 'Name',
+                       width: '30%'
+
+                   },
+                   Date: {
+                       title: 'Date',
+                       width: '30%'
+
+                   },
+                   Document: {
+                       title: 'Document',
+                       width: '40%'
+                   },
+
+                   //Register to selectionChanged event to hanlde events
+                   selectionChanged: function () {
+                       //Get all selected rows
+                       var $selectedRows = $('#StudentTableContainer').jtable('selectedRows');
+                       alert("function file");
+                       $('#SelectedRowList').empty();
+                       if ($selectedRows.length > 0) {
+                           //Show selected rows
+                           $selectedRows.each(function () {
+                               alert("function fire each");
+                               var record = $(this).data('record');
+                               $('#SelectedRowList').append(
+                                   '<b>StudentId</b>: ' + record.StudentId +
+                                   '<br /><b>Name</b>:' + record.Name + '<br /><br />'
+                                   );
+                           });
+                       } else {
+                           //No rows selected
+                           $('#SelectedRowList').append('No row selected! Select rows to see here...');
+                       }
+                   }
+
+               }
+           });
+
+           $('#tblMyDocumnents').jtable('load');
+
+
+
            $.ajax({
                type: "POST",
                url: "Billing.aspx/GetPatientDemographics",
@@ -345,6 +439,11 @@
                    alert(" conection to the server failed ");
                    console.log("error: " + errorthrown);
                }
+           });
+
+
+           $("#addDocument").click(function () {
+               $("#myModal2").modal("show");
            });
 
            $("#btnSave").click(function () {

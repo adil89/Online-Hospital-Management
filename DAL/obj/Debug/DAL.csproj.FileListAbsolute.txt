@@ -15,3 +15,12 @@ C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\o
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\obj\Debug\DAL.pdb
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\mustufain\Documents\Visual Studio 2013\Projects\drchrono\drchrono\DAL\bin\Debug\PhoneNumbers.dll
+D:\GoMdNow\gomdnow\DAL\bin\Debug\DAL.dll.config
+D:\GoMdNow\gomdnow\DAL\bin\Debug\DAL.dll
+D:\GoMdNow\gomdnow\DAL\bin\Debug\DAL.pdb
+D:\GoMdNow\gomdnow\DAL\bin\Debug\EntityFramework.dll
+D:\GoMdNow\gomdnow\DAL\bin\Debug\PhoneNumbers.dll
+D:\GoMdNow\gomdnow\DAL\bin\Debug\EntityFramework.xml
+D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.dll
+D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.pdb
