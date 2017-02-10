@@ -234,6 +234,12 @@ namespace BLL
         
         }
 
+        public List<accounthistory> GetAccountHistory(string patientid)
+        {
+
+           return account.GetAccountHistory(patientid);
+        }
+
      
 
 

@@ -1,138 +1,84 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Patients/Layout.Master" CodeBehind="AccountActivity.aspx.cs" Inherits="drchrono.Patients.AccountActivity" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+     <link href="../Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap.css" rel="stylesheet" />
+    <link href="../Scripts/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
+    
+    <link href="../Scripts/jtable/themes/metro/blue/jtable.css" rel="stylesheet" />
+    <%--<script src="../Scripts/modernizr-2.6.2.js" type="text/javascript"></script>--%>
+   <%-- <script src="../Scripts/jquery-1.9.0.min.js" type="text/javascript"></script>--%>
+    <script src="../Scripts/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
 
+    <script src="../Scripts/jtablesite.js" type="text/javascript"></script>
+    <!-- A helper library for JSON serialization -->
+    <script type="text/javascript" src="../Scripts/jtable/external/json2.js"></script>
+    <!-- Core jTable script file -->
+    <script type="text/javascript" src="../Scripts/jtable/jquery.jtable.js"></script>
+    <!-- ASP.NET Web Forms extension for jTable -->
+    <script type="text/javascript" src="../Scripts/jtable/extensions/jquery.jtable.aspnetpagemethods.js"></script>
 
-    <div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            load_logindetails();
+        });
+
+    </script>
+    <script type="text/javascript"> 
+
+        function load_logindetails() {
+
+    $('#loginhistory').jtable({
+                title: 'Login History',
+                pagesize: 10,
+                paging: true,
+                sorting: true,
+                defaultSorting: 'Name ASC',
+                actions: {
+                    listAction: 'AccountActivity.aspx/GetAccountHistory'
+                },
+                fields: {
+                    patientID: {
+                        key: true,
+                        list: false
+
+                    },
+                    lastlogindate: {
+                        title: 'Date',
+                        width: '30%'
+
+                    },
+                    lastlogintime: {
+                        title: 'Time',
+                        width: '30%'
+
+                    },
+                    browser: {
+                        title: 'Browser',
+                        width: '30%'
+                    },
+                   ipaddress: {
+                        title: 'IP',
+                        width: '40%'
+                    }
+                }
+            });
+            $('#loginhistory').jtable('load');
+            
+        }
+
+    </script>
+   <div class="container" >
+    
+       <div id="loginhistory">
+
     
     </div>
-        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
-            <AlternatingItemTemplate>
-                <tr style="background-color:#FFF8DC;">
-                    <td>
-                        <asp:Label ID="lastlogindateLabel" runat="server" Text='<%# Eval("lastlogindate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lastlogintimeLabel" runat="server" Text='<%# Eval("lastlogintime") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="browserLabel" runat="server" Text='<%# Eval("browser") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="ipaddressLabel" runat="server" Text='<%# Eval("ipaddress") %>' />
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
-            <EditItemTemplate>
-                <tr style="background-color:#008A8C;color: #FFFFFF;">
-                    <td>
-                        <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="lastlogindateTextBox" runat="server" Text='<%# Bind("lastlogindate") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="lastlogintimeTextBox" runat="server" Text='<%# Bind("lastlogintime") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="browserTextBox" runat="server" Text='<%# Bind("browser") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="ipaddressTextBox" runat="server" Text='<%# Bind("ipaddress") %>' />
-                    </td>
-                </tr>
-            </EditItemTemplate>
-            <EmptyDataTemplate>
-                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                    <tr>
-                        <td>No data was returned.</td>
-                    </tr>
-                </table>
-            </EmptyDataTemplate>
-            <InsertItemTemplate>
-                <tr style="">
-                    <td>
-                        <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                        <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="lastlogindateTextBox" runat="server" Text='<%# Bind("lastlogindate") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="lastlogintimeTextBox" runat="server" Text='<%# Bind("lastlogintime") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="browserTextBox" runat="server" Text='<%# Bind("browser") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="ipaddressTextBox" runat="server" Text='<%# Bind("ipaddress") %>' />
-                    </td>
-                </tr>
-            </InsertItemTemplate>
-            <ItemTemplate>
-                <tr style="background-color:#DCDCDC;color: #000000;">
-                    <td>
-                        <asp:Label ID="lastlogindateLabel" runat="server" Text='<%# Eval("lastlogindate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lastlogintimeLabel" runat="server" Text='<%# Eval("lastlogintime") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="browserLabel" runat="server" Text='<%# Eval("browser") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="ipaddressLabel" runat="server" Text='<%# Eval("ipaddress") %>' />
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <LayoutTemplate>
-                <table runat="server">
-                    <tr runat="server">
-                        <td runat="server">
-                            <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
-                                    <th runat="server">lastlogindate</th>
-                                    <th runat="server">lastlogintime</th>
-                                    <th runat="server">browser</th>
-                                    <th runat="server">ipaddress</th>
-                                </tr>
-                                <tr id="itemPlaceholder" runat="server">
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr runat="server">
-                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
-                            <asp:DataPager ID="DataPager1" runat="server">
-                                <Fields>
-                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
-                                </Fields>
-                            </asp:DataPager>
-                        </td>
-                    </tr>
-                </table>
-            </LayoutTemplate>
-            <SelectedItemTemplate>
-                <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
-                    <td>
-                        <asp:Label ID="lastlogindateLabel" runat="server" Text='<%# Eval("lastlogindate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lastlogintimeLabel" runat="server" Text='<%# Eval("lastlogintime") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="browserLabel" runat="server" Text='<%# Eval("browser") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="ipaddressLabel" runat="server" Text='<%# Eval("ipaddress") %>' />
-                    </td>
-                </tr>
-            </SelectedItemTemplate>
-        </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connectionstring %>" SelectCommand="SELECT [lastlogindate], [lastlogintime], [browser], [ipaddress] FROM [accounthistory] WHERE ([patientID] = @patientID)">
-            <SelectParameters>
-                <asp:SessionParameter Name="patientID" SessionField="patientid" Type="String" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+    
+</div>
+     
    </asp:Content>

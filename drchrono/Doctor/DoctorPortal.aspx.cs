@@ -10,6 +10,7 @@ using BLL;
 using drchrono.Patients;
 using DAL;
 using System.Xml;
+using Newtonsoft.Json;
 
 namespace drchrono
 {
@@ -132,6 +133,15 @@ namespace drchrono
         {
 
             fab.SaveAppointmentAdvancedMD(usercontext, url, int.Parse(patientID), appTime, appDate, int.Parse(Session["ProviderID"].ToString()), appType, reason);
+        }
+        [WebMethod(EnableSession = true)]
+        [System.Web.Script.Services.ScriptMethod(UseHttpGet = true, ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
+        public static Object getTime()
+        {
+            BLLPatientProfileHandler profile = new BLLPatientProfileHandler();
+            var autolock = profile.getAutoLock(HttpContext.Current.Session["patientid"].ToString());
+            return JsonConvert.SerializeObject(autolock);
+
         }
 
 

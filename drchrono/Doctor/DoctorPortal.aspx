@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DoctorPortal.aspx.cs" MasterPageFile="~/Patients/Layout.Master" Inherits="drchrono.DoctorPortal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DoctorPortal.aspx.cs" MasterPageFile="~/Doctor/Layout.Master" Inherits="drchrono.DoctorPortal" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <link href="../Content/themes/base/jquery-ui.css" rel="stylesheet" />
