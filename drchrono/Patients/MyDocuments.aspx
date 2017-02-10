@@ -224,7 +224,7 @@
       
      <div class="form-group">
         <label for="txtName">Name</label>
-        <asp:TextBox class="form-control" runat="server" id="txtName" type="text"/>
+        <asp:TextBox  runat="server" id="txtName" type="text"/>
          
         <%--<label for="comment">Description</label>
         <asp:textbox class="form-control" TextMode="multiline" runat="server" rows="3" id="txtDescription"></asp:textbox>--%>

@@ -98,7 +98,7 @@ namespace DAL
        }
 
 
-           public void SaveAppointmentLocalDB(int providerID,string patientid, string appointmenttime,string consultation, string date, string comments)
+           public void SaveAppointmentLocalDB(int providerID,string patientid, string appointmenttime,string consultation, string date, string comments,int clusterId)
            {
                PendingAppointment pendingAppts = new PendingAppointment();
                pendingAppts.appDate = date;
@@ -108,9 +108,51 @@ namespace DAL
                pendingAppts.Reason = comments;
                pendingAppts.Status = "pending";
                pendingAppts.ProviderID = providerID;
+               pendingAppts.clusterID = clusterId;
                db.PendingAppointments.Add(pendingAppts);
                db.SaveChanges();
 
+           }
+
+           public int addDocuments(int [] fileIDs)
+           {
+               int count = (from n in db.Documents select n).Count();
+               int clusterId = 0;
+
+
+               if (count == 0)
+               {
+                   for (int i = 0; i < fileIDs.Length; i++)
+                   {
+                       Document doc = new Document();
+                       doc.fileID = fileIDs[i];
+                       doc.clusterID = 1;
+                       db.Documents.Add(doc);
+                       db.SaveChanges();
+                       clusterId = Convert.ToInt32(doc.clusterID); 
+                   }
+                   
+               }
+               else {
+
+                   int clusterID = Convert.ToInt32((from n in db.Documents orderby n.clusterID descending select n.clusterID).First());
+                   clusterID = clusterID + 1;
+
+                   for (int i = 0; i < fileIDs.Length; i++)
+                   {
+                       Document doc = new Document();
+                       doc.fileID = fileIDs[i];
+                       doc.clusterID = clusterID;
+                       db.Documents.Add(doc);
+                       db.SaveChanges();
+                       clusterId = Convert.ToInt32(doc.clusterID);
+ 
+                   }
+
+               
+               }
+
+               return clusterId;
            }
    }
 }

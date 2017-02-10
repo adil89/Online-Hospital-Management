@@ -30,6 +30,82 @@
 
             load_FutureAppts();
 
+            
+            var count = 0;
+            $("#btnViewDocuments").click(function () {
+
+                var $selectedRows = $('#tblFutureAlailAppointments').jtable('selectedRows');
+
+                if ($selectedRows.length > 0) {
+
+
+                    var patientID = '';
+                    var appID = 0;
+
+                    $selectedRows.each(function () {
+                        var record = $(this).data('record');
+                        patientID = record.patientID;
+                        appID = record.appID;
+                    });
+
+                    if (count > 0)
+                    {
+                        $('#tblMyDocumnents').jtable('destroy');
+                    }
+                    
+
+                    $('#tblMyDocumnents').jtable({
+                        title: 'Patient Documents',
+                        pagesize: 10,
+                        paging: true,
+                        sorting: true,
+                        defaultSorting: 'Name ASC',
+                        selecting: true, //Enable selecting
+                        multiselect: false, //Allow multiple selecting
+                        selectingCheckboxes: true, //Show checkboxes on first column
+                        //selectOnRowClick: false, //Enable this to only select using checkboxes
+                        actions: {
+                            listAction: 'FutureAppointments.aspx/GetAllDocument?patientID='+patientID+'&appID='+appID,
+                            //createAction: 'SimplePeopleList.aspx/CreatePerson',
+                            //updateAction: 'SimplePeopleList.aspx/UpdatePerson',
+                            deleteAction: 'MyDocuments.aspx/DeleteFile'
+                        },
+                        fields: {
+                            FileId: {
+                                key: true,
+                                //create: false,
+                                //edit: false,
+                                list: false
+
+                            },
+                            Name: {
+                                title: 'Name',
+                                width: '30%'
+
+                            },
+                            Date: {
+                                title: 'Date',
+                                width: '30%'
+
+                            },
+                            Document: {
+                                title: 'Document',
+                                width: '40%'
+                            }
+                        }
+                    });
+
+                    $('#tblMyDocumnents').jtable('load');
+                    count = count + 1;
+                 
+                    $("#myModal2").modal("show");
+
+                } else {
+                    alert("Please select a patient to view files");
+                }
+
+
+            });
 
         });
 
@@ -93,6 +169,7 @@
             });
             $('#tblFutureAlailAppointments').jtable('load');
 
+
             $('#btnAccept').button().click(function () {
                 var $selectedRows = $('#tblFutureAlailAppointments').jtable('selectedRows');
 
@@ -121,9 +198,6 @@
                             dataType: "json",
                             success: function (result) {
 
-                                
-
-                                
                                 load_FutureAppts();
 
                             },
@@ -139,7 +213,8 @@
                     alert("Please select an apointment First");
                 }
             });
-            
+
+
         }
     </script>
      <br/>
@@ -151,5 +226,28 @@
     <br/>
     <br/>
     <button type="button" id="btnAccept" class="btn btn-success">Accept</button>
+    <button type="button" id="btnViewDocuments" class="btn btn-primary">View Documents</button>
 </div>
+    <div class="modal fade" id="myModal2">
+  <div style="width:70%;" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">View Documents</h4>
+      </div>
+    
+      <div class="modal-body">
+      
+          <div id="tblMyDocumnents">
+          </div>
+ </div>
+    
+      <div class="modal-footer">
+        <button type="button" id="btnDownload" class="btn btn-success" data-dismiss="modal">Download</button>
+        
+      </div>
+        
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </asp:Content>

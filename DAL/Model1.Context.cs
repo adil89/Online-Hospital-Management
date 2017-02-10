@@ -39,6 +39,7 @@ namespace DAL
         public DbSet<SeeDoctorNow> SeeDoctorNows { get; set; }
         public DbSet<PendingAppointment> PendingAppointments { get; set; }
         public DbSet<ApprovedAppointment> ApprovedAppointments { get; set; }
+        public DbSet<Document> Documents { get; set; }
     
         public virtual ObjectResult<getAppointments_Result> getAppointments(string dateTime, string patientId)
         {
@@ -51,19 +52,6 @@ namespace DAL
                 new ObjectParameter("patientId", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAppointments_Result>("getAppointments", dateTimeParameter, patientIdParameter);
-        }
-    
-        public virtual ObjectResult<GetFutureAvailableAppointments_Result> GetFutureAvailableAppointments(string dateTime, Nullable<int> providerID)
-        {
-            var dateTimeParameter = dateTime != null ?
-                new ObjectParameter("DateTime", dateTime) :
-                new ObjectParameter("DateTime", typeof(string));
-    
-            var providerIDParameter = providerID.HasValue ?
-                new ObjectParameter("ProviderID", providerID) :
-                new ObjectParameter("ProviderID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetFutureAvailableAppointments_Result>("GetFutureAvailableAppointments", dateTimeParameter, providerIDParameter);
         }
     
         public virtual int getpass(string email, ObjectParameter pass)
@@ -138,6 +126,19 @@ namespace DAL
                 new ObjectParameter("ProviderID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPatientsInQueue_Result>("GetPatientsInQueue", providerIDParameter);
+        }
+    
+        public virtual ObjectResult<GetFutureAvailableAppointments_Result> GetFutureAvailableAppointments(string dateTime, Nullable<int> providerID)
+        {
+            var dateTimeParameter = dateTime != null ?
+                new ObjectParameter("DateTime", dateTime) :
+                new ObjectParameter("DateTime", typeof(string));
+    
+            var providerIDParameter = providerID.HasValue ?
+                new ObjectParameter("ProviderID", providerID) :
+                new ObjectParameter("ProviderID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetFutureAvailableAppointments_Result>("GetFutureAvailableAppointments", dateTimeParameter, providerIDParameter);
         }
     }
 }

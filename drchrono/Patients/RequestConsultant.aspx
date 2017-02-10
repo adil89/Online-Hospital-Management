@@ -335,7 +335,7 @@
  </div>
     
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Add Documents</button>
+        <button type="button" id="btnAddDocuments" class="btn btn-success" data-dismiss="modal">Add Documents</button>
         
       </div>
         
@@ -345,9 +345,27 @@
    
     <script type="text/javascript">
 
-       
+        var fileIDs = [];
 
-       $(document).ready(function () {
+        $(document).ready(function () {
+
+
+            $('#btnAddDocuments').button().click(function () {
+                var $selectedRows = $('#tblMyDocumnents').jtable('selectedRows');
+
+                if ($selectedRows.length > 0) {
+                    //Show selected rows
+                    $selectedRows.each(function () {
+                        var record = $(this).data('record');
+
+                        var FileId = record.FileId;
+                        fileIDs.push(FileId);
+
+                    });
+                } else {
+                    alert("Please select a file to Add");
+                }
+            });
            
 
            $('#tblMyDocumnents').jtable({
@@ -767,7 +785,7 @@
                             $.ajax({
                                 type: "POST",
                                 url: "RequestConsultant.aspx/SaveAppointmentLocalDB", //Error is coming here
-                                data: {},
+                                data: JSON.stringify({fileIDs: fileIDs}),
                                 contentType: 'application/json; charset=utf-8',
                                 dataType: 'json',
                                 async: "true",

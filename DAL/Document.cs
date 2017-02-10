@@ -10,16 +10,12 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetFutureAvailableAppointments_Result
+    public partial class Document
     {
-        public int appID { get; set; }
-        public string patientID { get; set; }
-        public string appTime { get; set; }
-        public string appDate { get; set; }
-        public string fulldate { get; set; }
-        public string appType { get; set; }
-        public string reason { get; set; }
-        public string Status { get; set; }
+        public int id { get; set; }
+        public Nullable<int> fileID { get; set; }
+        public Nullable<int> clusterID { get; set; }
     }
 }

@@ -116,6 +116,7 @@
     <EntitySetMapping Name="PendingAppointments">
       <EntityTypeMapping TypeName="drchronoModel.PendingAppointment">
         <MappingFragment StoreEntitySet="PendingAppointments">
+          <ScalarProperty Name="clusterID" ColumnName="clusterID" />
           <ScalarProperty Name="Feedback" ColumnName="Feedback" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
@@ -134,19 +135,6 @@
           <ScalarProperty Name="appTime" ColumnName="appTime" />
           <ScalarProperty Name="appDate" ColumnName="appDate" />
           <ScalarProperty Name="fulldate" ColumnName="fulldate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="GetFutureAvailableAppointments" FunctionName="drchronoModel.Store.GetFutureAvailableAppointments">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="drchronoModel.GetFutureAvailableAppointments_Result">
-          <ScalarProperty Name="patientID" ColumnName="patientID" />
-          <ScalarProperty Name="appTime" ColumnName="appTime" />
-          <ScalarProperty Name="appDate" ColumnName="appDate" />
-          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
-          <ScalarProperty Name="appType" ColumnName="appType" />
-          <ScalarProperty Name="reason" ColumnName="reason" />
           <ScalarProperty Name="Status" ColumnName="Status" />
         </ComplexTypeMapping>
       </ResultMapping>
@@ -209,6 +197,29 @@
           <ScalarProperty Name="fulldate" ColumnName="fulldate" />
           <ScalarProperty Name="ApptType" ColumnName="ApptType" />
           <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="drchronoModel.Document">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="clusterID" ColumnName="clusterID" />
+          <ScalarProperty Name="fileID" ColumnName="fileID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetFutureAvailableAppointments" FunctionName="drchronoModel.Store.GetFutureAvailableAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="drchronoModel.GetFutureAvailableAppointments_Result">
+          <ScalarProperty Name="appID" ColumnName="appID" />
+          <ScalarProperty Name="patientID" ColumnName="patientID" />
+          <ScalarProperty Name="appTime" ColumnName="appTime" />
+          <ScalarProperty Name="appDate" ColumnName="appDate" />
+          <ScalarProperty Name="fulldate" ColumnName="fulldate" />
+          <ScalarProperty Name="appType" ColumnName="appType" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
           <ScalarProperty Name="Status" ColumnName="Status" />
         </ComplexTypeMapping>
       </ResultMapping>

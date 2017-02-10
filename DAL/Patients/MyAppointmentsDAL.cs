@@ -42,6 +42,13 @@ namespace DAL.Patients
             return returnList;
         }
 
-       
+        public List<Document> getSentDocuments(int appID)
+        {
+            int clusterID = Convert.ToInt32((from n in db.PendingAppointments where n.appID == appID select n.clusterID).Single());
+
+            List<Document> docs = (from n in db.Documents where n.clusterID == clusterID select n).ToList();
+
+            return docs;
+        }
     }
 }

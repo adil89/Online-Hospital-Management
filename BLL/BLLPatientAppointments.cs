@@ -100,7 +100,7 @@ namespace BLL
         
         }
 
-                 public void SaveAppointmentLocalDB(XmlNode usercontext,string url ,string patientid, string appointmenttime,string consultation, string date, string comments)
+                 public void SaveAppointmentLocalDB(XmlNode usercontext,string url ,string patientid, string appointmenttime,string consultation, string date, string comments,int[] fileIDs)
          
                      
          {
@@ -150,10 +150,17 @@ namespace BLL
             
              }
 
+             int clusterId = 0;
+             if (fileIDs.Length > 0)
+             {
+                 clusterId = appointment.addDocuments(fileIDs);
+             }
+
+
                      foreach(var id in ProviderID)
                      {
 
-                         appointment.SaveAppointmentLocalDB(id, patientid, appointmenttime, consultation, date, comments);
+                         appointment.SaveAppointmentLocalDB(id, patientid, appointmenttime, consultation, date, comments, clusterId);
                      }
                  }
 

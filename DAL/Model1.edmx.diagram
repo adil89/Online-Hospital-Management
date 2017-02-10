@@ -20,6 +20,7 @@
         <AssociationConnector Association="drchronoModel.FK__PendingAp__Provi__2CF2ADDF" />
         <EntityTypeShape EntityType="drchronoModel.ApprovedAppointment" Width="1.5" PointX="5.25" PointY="10.5" />
         <AssociationConnector Association="drchronoModel.FK__ApprovedA__appID__367C1819" />
+        <EntityTypeShape EntityType="drchronoModel.Document" Width="1.5" PointX="9.875" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -27,6 +27,8 @@ namespace DAL.Doctors
                                             where n.patientID == patientID && n.appTime == appTime && n.appDate == appDate
                                             select n).ToList();
 
+            int clusterID = Convert.ToInt32(rec[0].clusterID);
+
             for (int i = 0; i < rec.Count; i++)
             { 
                 db.PendingAppointments.Remove(rec[i]); 
@@ -41,6 +43,7 @@ namespace DAL.Doctors
             pa.Reason = reason;
             pa.ProviderID = ProviderID;
             pa.Status = "Accepted";
+            pa.clusterID = clusterID;
 
             db.PendingAppointments.Add(pa);
             db.SaveChanges();

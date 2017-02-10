@@ -81,6 +81,9 @@
     <Compile Include="Doctoruser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Document.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="getAppointments_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

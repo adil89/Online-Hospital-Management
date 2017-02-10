@@ -177,19 +177,19 @@ namespace drchrono
          [WebMethod(EnableSession = true)]
          
 
-            public static void  SaveAppointmentLocalDB()
+            public static void  SaveAppointmentLocalDB(int [] fileIDs)
         {
             MakeAppointment SaveAppt = new MakeAppointment();    
             XmlNode n = HttpContext.Current.Session["usercontext"] as XmlNode;
-            SaveAppt.SaveAppts(n, HttpContext.Current.Session["url"].ToString(), HttpContext.Current.Session["patientid"].ToString(), HttpContext.Current.Session["ApptTime"].ToString(), HttpContext.Current.Session["consultation"].ToString(), HttpContext.Current.Session["date"].ToString(), HttpContext.Current.Session["comments"].ToString());
+            SaveAppt.SaveAppts(n, HttpContext.Current.Session["url"].ToString(), HttpContext.Current.Session["patientid"].ToString(), HttpContext.Current.Session["ApptTime"].ToString(), HttpContext.Current.Session["consultation"].ToString(), HttpContext.Current.Session["date"].ToString(), HttpContext.Current.Session["comments"].ToString(), fileIDs);
 
 
         }
 
-         public void SaveAppts(XmlNode usercontext, string url, string patientid, string time, string consultation, string date, string comments)
+         public void SaveAppts(XmlNode usercontext, string url, string patientid, string time, string consultation, string date, string comments, int [] fileIDs)
                 
        {
-           appointment.SaveAppointmentLocalDB(usercontext, url, patientid, time,consultation, date, comments);
+           appointment.SaveAppointmentLocalDB(usercontext, url, patientid, time, consultation, date, comments, fileIDs);
     
         }
 
@@ -260,7 +260,7 @@ namespace drchrono
          }
 
           [WebMethod(EnableSession = true)]
-            public static void SaveReminder(string reminderType)
+         public static void SaveReminder(string reminderType)
           {
 
               XmlNode n = HttpContext.Current.Session["usercontext"] as XmlNode;
@@ -269,7 +269,7 @@ namespace drchrono
               apptrem.SaveReminderAppts(reminderType, n, url, HttpContext.Current.Session["patientid"].ToString());
 
           }
-            public void SaveReminderAppts(string reminderType,XmlNode usercontext, string url,string patientid)
+          public void SaveReminderAppts(string reminderType, XmlNode usercontext, string url, string patientid)
           {
                         consultant.SaveReminder(reminderType,usercontext, url, patientid);
 

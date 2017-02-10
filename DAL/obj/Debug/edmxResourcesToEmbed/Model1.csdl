@@ -48,10 +48,6 @@
       <Parameter Name="DateTime" Mode="In" Type="String" />
       <Parameter Name="patientId" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="GetFutureAvailableAppointments" ReturnType="Collection(drchronoModel.GetFutureAvailableAppointments_Result)">
-      <Parameter Name="DateTime" Mode="In" Type="String" />
-      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="getpass">
       <Parameter Name="email" Mode="In" Type="String" />
       <Parameter Name="pass" Mode="InOut" Type="String" />
@@ -80,6 +76,11 @@
       <End Role="ApprovedAppointment" EntitySet="ApprovedAppointments" />
     </AssociationSet>
     <FunctionImport Name="GetPatientsInQueue" ReturnType="Collection(drchronoModel.GetPatientsInQueue_Result)">
+      <Parameter Name="ProviderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Documents" EntityType="drchronoModel.Document" />
+    <FunctionImport Name="GetFutureAvailableAppointments" ReturnType="Collection(drchronoModel.GetFutureAvailableAppointments_Result)">
+      <Parameter Name="DateTime" Mode="In" Type="String" />
       <Parameter Name="ProviderID" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
@@ -209,6 +210,7 @@
     <Property Name="Feedback" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DoctorRoom" Relationship="drchronoModel.FK__PendingAp__Provi__2CF2ADDF" FromRole="PendingAppointment" ToRole="DoctorRoom" />
     <NavigationProperty Name="ApprovedAppointments" Relationship="drchronoModel.FK__ApprovedA__appID__367C1819" FromRole="PendingAppointment" ToRole="ApprovedAppointment" />
+    <Property Type="Int32" Name="clusterID" />
   </EntityType>
   <Association Name="FK__PendingAp__Provi__2CF2ADDF">
     <End Type="drchronoModel.DoctorRoom" Role="DoctorRoom" Multiplicity="1" />
@@ -226,15 +228,6 @@
     <Property Type="String" Name="appTime" Nullable="true" />
     <Property Type="String" Name="appDate" Nullable="true" />
     <Property Type="String" Name="fulldate" Nullable="true" />
-    <Property Type="String" Name="Status" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="GetFutureAvailableAppointments_Result">
-    <Property Type="String" Name="patientID" Nullable="true" />
-    <Property Type="String" Name="appTime" Nullable="true" />
-    <Property Type="String" Name="appDate" Nullable="true" />
-    <Property Type="String" Name="fulldate" Nullable="true" />
-    <Property Type="String" Name="appType" Nullable="true" />
-    <Property Type="String" Name="reason" Nullable="true" />
     <Property Type="String" Name="Status" Nullable="true" />
   </ComplexType>
   <ComplexType Name="GetPastAppointments_Result">
@@ -291,6 +284,24 @@
     <Property Type="String" Name="fulldate" Nullable="false" />
     <Property Type="String" Name="ApptType" Nullable="false" />
     <Property Type="String" Name="Reason" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="fileID" />
+    <Property Type="Int32" Name="clusterID" />
+  </EntityType>
+  <ComplexType Name="GetFutureAvailableAppointments_Result">
+    <Property Type="Int32" Name="appID" Nullable="false" />
+    <Property Type="String" Name="patientID" Nullable="true" />
+    <Property Type="String" Name="appTime" Nullable="true" />
+    <Property Type="String" Name="appDate" Nullable="true" />
+    <Property Type="String" Name="fulldate" Nullable="true" />
+    <Property Type="String" Name="appType" Nullable="true" />
+    <Property Type="String" Name="reason" Nullable="true" />
     <Property Type="String" Name="Status" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -9,6 +9,8 @@ using BLL.Doctors;
 using drchrono.Patients;
 using DAL;
 using System.Xml;
+using drchrono.PropertyClasses;
+using BLL.Patients;
 
 namespace drchrono.Doctor
 {
@@ -19,6 +21,8 @@ namespace drchrono.Doctor
         {
 
         }
+
+        BLLMyDocuments _myDoc = new BLLMyDocuments();
 
         [WebMethod(EnableSession = true)]
         public static object GetFutureAvailableAppointments(int jtStartIndex, int jtPageSize)
@@ -58,6 +62,29 @@ namespace drchrono.Doctor
         {
 
             fab.SaveAppointmentAdvancedMD(usercontext, url, patientID, appTime, appDate, int.Parse(Session["ProviderID"].ToString()), appType, reason);
+        }
+
+        [WebMethod(EnableSession = true)]
+        public static object GetAllDocument(int jtStartIndex, int jtPageSize)
+        {
+
+            string patientID = HttpContext.Current.Request.QueryString["patientID"];
+            int appID = Convert.ToInt32(HttpContext.Current.Request.QueryString["appID"]);
+
+            FutureAppointments my = new FutureAppointments();
+            List<Documents> doc = my.GetAllDocument2(patientID, appID);
+
+            return new { Result = "OK", Records = doc, TotalRecordCount = doc.Count };
+        }
+
+        private List<Documents> GetAllDocument2(string patientID, int appID)
+        {
+               
+            XmlNode n = HttpContext.Current.Session["usercontext"] as XmlNode;
+            string url = HttpContext.Current.Session["url"].ToString();
+            string patientId = patientID;
+            List<Documents> doc = _myDoc.GetAllDocuments(patientId, url, n, appID);
+            return doc;
         }
 
         }

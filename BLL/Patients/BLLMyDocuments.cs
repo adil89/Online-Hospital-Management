@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using drchrono.PropertyClasses;
+using DAL.Patients;
+using DAL;
 
 namespace BLL.Patients
 {
@@ -96,7 +98,9 @@ namespace BLL.Patients
             getDocuments.Load(reader2);
         }
 
-        public List<Documents> GetAllDocuments(string patientId, string url, XmlNode usercontext)
+        MyAppointmentsDAL mad = new MyAppointmentsDAL();
+
+        public List<Documents> GetAllDocuments(string patientId, string url, XmlNode usercontext,int appID = 0)
         {
             List<Documents> docList = new List<Documents>();
             Uri uri2 = new Uri(url);
@@ -164,12 +168,39 @@ namespace BLL.Patients
                                             }
 
                     docList.Add(doc);
+
+                    
                 }
                 
                 
 
             }
+
+            if(appID > 0)
+            {
+                List<Documents> docListNew = new List<Documents>();
+                List<Document> docs = mad.getSentDocuments(appID);
+
+
+                for (int i = 0; i < docList.Count; i++)
+                {
+                    for (int j = 0; j < docs.Count; j++)
+                    {
+                        if (Convert.ToInt32(docList[i].FileId) == docs[j].fileID)
+                        {
+                            docListNew.Add(docList[i]);
+                        }
+                    }
+                }
+
+
+                return docListNew;
+
+            }else{
             return docList;
+            }
+
+            
         }
 
         

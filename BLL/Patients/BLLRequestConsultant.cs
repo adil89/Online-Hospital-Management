@@ -6,14 +6,18 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using DAL.Patients;
 
 namespace BLL.Patients
 {
     public class BLLRequestConsultant
     {
 
-        public void SaveReminder( string reminderType,XmlNode usercontext, string url,string patientid)
+        public void SaveReminder(string reminderType, XmlNode usercontext, string url, string patientid)
         {
+            
+            
+
 
                                                 //last returned URL
                 if (reminderType == "email")

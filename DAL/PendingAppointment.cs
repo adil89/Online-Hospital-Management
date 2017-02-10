@@ -28,6 +28,7 @@ namespace DAL
         public int ProviderID { get; set; }
         public string Status { get; set; }
         public string Feedback { get; set; }
+        public Nullable<int> clusterID { get; set; }
     
         public virtual DoctorRoom DoctorRoom { get; set; }
         public virtual ICollection<ApprovedAppointment> ApprovedAppointments { get; set; }
