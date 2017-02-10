@@ -129,6 +129,15 @@ namespace DAL
 
         }
 
+        public List<accounthistory> GetAccountHistory(string patientid)
+        {
+            var records = (from p in db.accounthistories
+                           where p.patientID == patientid orderby p.accountID descending
+                           select p).ToList();
+          
+            return records;
+        }
+
       
 
         }
