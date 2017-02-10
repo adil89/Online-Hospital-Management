@@ -110,9 +110,6 @@
                 //Show selected rows
                 $selectedRows.each(function () {
                     var record = $(this).data('record');
-                  
-
-
                     var FileId = record.FileId;
                     
                     $.ajax({
@@ -124,24 +121,7 @@
                           success: function (result) {
                              
                               window.location.href = "/DownloadFile.ashx";
-
-                              //window.setTimeout(stub, 5000);
-                              //$.ajax({
-                              //    type: "POST",
-                              //    url: "MyDocuments.aspx/delFile",
-                              //    contentType: "application/json; charset=utf-8",
-                              //    dataType: "json",
-                              //    success: function (result) {
-
-                              //    },
-                              //    error: function (xmlhttprequest, textstatus, errorthrown) {
-                              //        alert(" conection to the server failed ");
-                              //        console.log("error: " + errorthrown);
-                              //    }
-                              //});
-
-
-                          },
+                            },
                           error: function (xmlhttprequest, textstatus, errorthrown) {
                               alert(" conection to the server failed ");
                               console.log("error: " + errorthrown);

@@ -1,0 +1,23 @@
+only IP from US can access the website 
+one time only one session machine needs to be authorized
+if report abuse notification sent to admin
+Patient Dashboard
+Time Zone 
+Find Nearby Pharmacies - Dospot API
+Payment - Stripe API
+Billing - Credit Card details / Insurance Details
+MyProifle ----> general Information, Billing details, Secondary Information
+Health History : Blood Group (Drop Down)
+Surgeries: if chooses----> drop down list becomes visible and user can select year
+if Health problem----> update,delete included 
+Family History---> relationship,Suffering since------> drop down list
+  sign --> new entry
+Medication----> Dospot API
+Account Settings 
+
+4 Portals:
+Doctor, Patient, Support, Medical Biller
+Patient ---> Support Team
+Doctor----> Support Team
+Support Team--------> Medical Biller
+Patient---->Doctor

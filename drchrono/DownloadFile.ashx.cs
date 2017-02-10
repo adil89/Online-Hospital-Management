@@ -31,6 +31,8 @@ namespace drchrono
             context.Response.TransmitFile(filePath + fname);
             context.Response.End();
 
+            var uri = new Uri(filePath + fname, UriKind.Absolute);
+            System.IO.File.Delete(uri.LocalPath);
            
 
         }

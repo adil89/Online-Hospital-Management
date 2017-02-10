@@ -68,7 +68,7 @@
                             listAction: 'FutureAppointments.aspx/GetAllDocument?patientID='+patientID+'&appID='+appID,
                             //createAction: 'SimplePeopleList.aspx/CreatePerson',
                             //updateAction: 'SimplePeopleList.aspx/UpdatePerson',
-                            deleteAction: 'MyDocuments.aspx/DeleteFile'
+                            //deleteAction: 'MyDocuments.aspx/DeleteFile'
                         },
                         fields: {
                             FileId: {
@@ -214,6 +214,37 @@
                 }
             });
 
+            $('#btnDownload').click(function () {
+                var $selectedRows = $('#tblMyDocumnents').jtable('selectedRows');
+
+                if ($selectedRows.length > 0) {
+                    //Show selected rows
+                    $selectedRows.each(function () {
+                        var record = $(this).data('record');
+                        var FileId = record.FileId;
+
+                        $.ajax({
+                            type: "POST",
+                            url: "../Patients/MyDocuments.aspx/downloadAttachment",
+                            data: '{FileId: "' + FileId + '" }',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (result) {
+
+                                window.location.href = "/DownloadFile.ashx";
+                            },
+                            error: function (xmlhttprequest, textstatus, errorthrown) {
+                                alert(" conection to the server failed ");
+                                console.log("error: " + errorthrown);
+                            }
+                        });
+
+
+                    });
+                } else {
+                    alert("Please select a file to download");
+                }
+            });
 
         }
     </script>
