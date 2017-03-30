@@ -23,3 +23,4 @@ D:\GoMdNow\gomdnow\DAL\bin\Debug\PhoneNumbers.dll
 D:\GoMdNow\gomdnow\DAL\bin\Debug\EntityFramework.xml
 D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.dll
 D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.pdb
+D:\GoMdNow\gomdnow\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

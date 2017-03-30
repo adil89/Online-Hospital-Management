@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="content.aspx" />
     <Content Include="Content\avgrund.css" />
     <Content Include="Content\MultiStep.css" />
     <Content Include="Content\Site.css" />
@@ -215,6 +216,7 @@
     <Content Include="Content\themes\bootstrap-theme.min.css" />
     <Content Include="Content\themes\bootstrap.css" />
     <Content Include="Content\themes\bootstrap.min.css" />
+    <Content Include="cross.aspx" />
     <Content Include="Doctor\Consultation.aspx" />
     <Content Include="Doctor\DoctorLogin.aspx" />
     <Content Include="Doctor\DoctorPortal.aspx" />
@@ -416,6 +418,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="user_actions.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -470,6 +473,20 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="content.aspx.cs">
+      <DependentUpon>content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="content.aspx.designer.cs">
+      <DependentUpon>content.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cross.aspx.cs">
+      <DependentUpon>cross.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cross.aspx.designer.cs">
+      <DependentUpon>cross.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -730,6 +747,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="user_actions.aspx.cs">
+      <DependentUpon>user_actions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user_actions.aspx.designer.cs">
+      <DependentUpon>user_actions.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
